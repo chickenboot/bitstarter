@@ -3,61 +3,185 @@
   %head
     %title My First Bitstarter
     %meta{charset: "utf-8"}
-    %link{type: "text/css", rel: "stylesheet", href: "http://twitter.github.com/bootstrap/assets/css/bootstrap.css"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    %link{type: "text/css", rel: "stylesheet", href: "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"}
+    %link{type: "text/css", rel: "stylesheet", href: "http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.min.css"}
+    %link{type: "text/css", rel: "stylesheet", href: "social-buttons.css"}
+    %script{src: "http://code.jquery.com/jquery-1.10.1.min.js"}
+    %script{src: "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"}
+    %link{type: "text/css", rel: "stylesheet", href: "http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic"}
+    %link{type: "text/css", rel: "stylesheet", href: "http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic"}
     :css
+      @media (min-width: 980px) {
+        body {
+          padding-top: 60px;
+        }
+        .linediv-l {
+          border-right: 1px white solid;
+        }        
+        .linediv-r {
+          border-left: 1px white solid;
+        }        
+      }
+
+      @media (max-width: 480px) {
+        .copy {
+          padding: 2.5% 10%;
+        }
+        .linediv-l {
+          border-bottom: 1px white solid;
+        }        
+        .linediv-r {
+          border-top: 1px white solid;
+        }        
+      }
+
       body {
-        padding-top: 20px;
-        padding-bottom: 40px;
+        font-family: "Open Sans", Helvetica, Arial, sans-serif;
       }
-      .container {
-        width: 960px;
-      }
-      p.lead {
-        padding-top: 15px;
-      }
-      .navigation, .pitch, .section1, .section2, .faq, .footer {
-        padding: 10px 0px 10px 0px;
-      }
-      .video, .thermometer, .order, .social {
-        border: 1px dotted;
+      
+      .heading, .subheading {
+        font-family: "Ubuntu", Helvetica, Arial, sans-serif;
         text-align: center;
       }
-      .video {
-        /* Internal borders have 1px width, thus need to add 4 x 1px to 120px. */
-        height: 124px;
-        line-height: 124px;
+
+      p.lead {
+        padding-top: 1.5%;
+        font-size: 24px;
+        line-height: 30px;
       }
-      .thermometer, .order, .social {
-        /* line-height to vertically center: http://phrogz.net/css/vertical-align/index.html */
-        height: 40px;
-        line-height: 40px;
+
+      p {
+        font-size: 18px;
+        line-height: 24px;
       }
-      div.row {
-        border: 1px solid;
+
+      .pitch {
+        padding: 2.5% 0%;
+      }
+
+      .order {
+        padding: 2% 0%;
+      }
+
+      .actions {
+        background-color: #343434;
+        padding: 3% 0%;
+      }
+
+      .video, .thermometer, .order, .social, .statistics {
+        text-align: center;
+      }
+
+      .statistics h3, .statistics p {
+        color: white;
+      }
+
+      .copy {
+        padding-top: 2.5%;
+        padding-bottom: 2.5%;
+        text-align: justify;
+      }
+
+      .asset {
+        padding: 2.5% 0%;
+      }
+      .footer {
+        color: #ccc;
+        text-align: center;
+      }
+      .footer p {
+        font-size: 11px;
+      }
+      .footer a {
+        color: #ccf;
       }
   %body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          %button.btn.btn-navbar{type: 'button', data: {toggle: 'collapse', target: '.nav-collapse'}}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{href: "#"} Bitstarter
+          .nav-collapse.collapse
+            %ul.nav
+              %li.active
+                %a{href: "#"} Home
+              %li
+                %a{href: "#about"} About
+              %li
+                %a{href: "#contact"} Contact
     .container
-      .row.navigation
-        .span2.logo Logo
-        .span6.blank Blank
-        .span4.about About
-      .row.heading
+      .row-fluid.heading
         .span12
-          %h1 Bitstarter Title
-      .row.subheading
+          %h1 Product
+      .row-fluid.subheading
         .span12
-          %p.lead This is my first bitstarter project.
-      .row.pitch
-        .span6.video Video
-        .span6
-          .thermometer Thermometer
-          .order Order
-          .social Social
-      .row.section1
-        .span12 Marketing Section 1
-      .row.section2
-        .span12 Marketing Section 2
-      .row.faq
-        .span12 FAQ
-      .row.footer
-        .span12 Footer
+          %p.lead One sentence description.
+      .row-fluid.pitch
+        .span5.offset1.video
+          %img.img-polaroid{src: "http://placehold.it/480x300"}
+        .span5.actions
+          .span8.offset2
+            .statistics
+              .span4
+                .linediv-l
+                  %h3 1000
+                  %p backers
+              .span4
+                .linediv-c
+                  %h3 $6000
+                  %p of $10,000
+              .span4
+                .linediv-r
+                  %h3 10
+                  %p days left
+          .span10.offset1
+            .thermometer.progress.active
+              .bar.bar-success{style: "width: 60%;"}
+              .bar.bar-warning{style: "width: 40%;"}
+          .span6.offset3.order
+            %button.btn.btn-success.btn-large Preorder
+          .span8.offset2.social
+            %button.btn.btn-twitter
+              %i.icon-twitter
+              | Twitter
+            %button.btn.btn-facebook
+              %i.icon-facebook
+              | Facebook
+      .row-fluid.section1
+        .span5.offset1.asset
+          %img.img-polaroid{src: "http://placehold.it/480x300"}
+        .span5.copy
+          %p
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta, dui sagittis hendrerit rutrum, nunc leo tempus nisl, eu mollis justo velit at nunc. Fusce nec egestas sem. Donec fringilla ante lectus, a pellentesque lacus dignissim ac. Sed volutpat lorem ut congue malesuada. In facilisis scelerisque turpis sed lacinia. Donec in orci lectus. Donec auctor semper quam, eget rhoncus purus fringilla id. Phasellus id nibh eu risus ultrices adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta, dui sagittis hendrerit rutrum, nunc leo tempus nisl, eu mollis justo velit at nunc. Fusce nec egestas sem. Donec fringilla.
+      .row-fluid.section2
+        .span5.offset1.copy.copy-right
+          %p
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta, dui sagittis hendrerit rutrum, nunc leo tempus nisl, eu mollis justo velit at nunc. Fusce nec egestas sem. Donec fringilla ante lectus, a pellentesque lacus dignissim ac. Sed volutpat lorem ut congue malesuada. In facilisis scelerisque turpis sed lacinia. Donec in orci lectus. Donec auctor semper quam, eget rhoncus purus fringilla id. Phasellus id nibh eu risus ultrices adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta, dui sagittis hendrerit rutrum, nunc leo tempus nisl, eu mollis justo velit at nunc. Fusce nec egestas sem. Donec fringilla.
+        .span5.asset
+          %img.img-polaroid{src: "http://placehold.it/480x300"}
+      .row-fluid.faq
+        .span10.offset1
+          %h3 FAQ
+          .accordion#accordion2
+            .accordion-group
+              .accordion-heading
+                %a.accordion-toggle{href: "#collapseOne", data: {toggle: "collapse", parent: "#accordion2"}} What does FAQ stand for?
+              .accordion-body.collapse#collapseOne
+                .accordion-inner
+                  Frequently Asked Question.
+            .accordion-group
+              .accordion-heading
+                %a.accordion-toggle{href: "#collapseTwo", data: {toggle: "collapse", parent: "#accordion2"}} What's a Frequently Asked Question?
+              .accordion-body.collapse#collapseTwo
+                .accordion-inner
+                  A question which is commonly asked by users.
+      .row-fluid.footer
+        .span12
+          %p 
+            This work is licensed under the
+            %a{href: "http://creativecommons.org/licenses/by-sa/3.0/"} CC By-SA 3.0
+            , without all the cruft that would otherwise be put at the bottom of the page.
